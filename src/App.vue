@@ -1,71 +1,16 @@
-<script setup lang="ts">
-import Hello from './components/Hello.vue'
-import useMousePosition from './hooks/useMousePosition'
-import useFetch from './hooks/useFetch'
-import Modal from './components/Modal.vue'
-import { ref } from 'vue'
-
-interface dog {
-  message: string
-  status: string
-}
-
-const { result, loading, loaded, error, refetch } = useFetch<dog>(
-  'https://dog.ceo/api/breed/shiba/images/random',
-)
-
-const { x: positionX, y: positionY } = useMousePosition()
-
-const isOpen = ref(false)
-
-const openModal = () => {
-  isOpen.value = true
-}
-
-const handleClose = () => {
-  isOpen.value = false
-}
-</script>
-
 <template>
-  <Hello
-    msg="vue3 script setup"
-    description="sfc, defineEmits, defineProps, custom hooks"
-  />
-  <h1>X: {{ positionX }}, Y: {{ positionY }}</h1>
-  <div class="dogContainer" @click="refetch">
-    <img v-if="result" :src="result.message" />
-    <img
-      v-if="loading"
-      class="loading"
-      src="https://c.tenor.com/pgO8hZgOW5AAAAAd/loading-bar.gif"
-      alt="loading"
-    />
-    <img
-      v-if="error"
-      src="https://c.tenor.com/3pX4U3Jk24MAAAAj/popato-cute.gif"
-    />
-  </div>
+    
+  <router-view v-slot="{ Component }">
+  <transition name="fade">
+    <component :is="Component" />
+  </transition>
+</router-view>
 
-  <pre class="status">
-    <span>loaded: {{ loaded }}</span>
-    <span>loading: {{ loading }}</span>
-    <span>result: {{ result ? result : 'null' }}</span>
-    <span>error: {{ error ? error : 'null' }}</span>
-  </pre>
-
-  <h1>
-    <button @click="openModal"><h2>Open Modal</h2></button>
-    <Modal :isOpen="isOpen" @closeModal="handleClose">
-      <template #title> Info </template>
-      <template #description>
-        Data from
-        <a href="https://dog.ceo/dog-api/">Dog API.</a> <br />Made with 💙 by
-        leovoon
-      </template>
-    </Modal>
-  </h1>
 </template>
+
+<script setup lang="ts">
+
+</script>
 
 <style>
 #app {
@@ -77,7 +22,7 @@ const handleClose = () => {
   justify-content: center;
   align-items: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 40px 0;
 }
 
 .dogContainer {
@@ -104,10 +49,20 @@ const handleClose = () => {
   flex-direction: column;
   justify-content: start;
   align-items: start;
+  border: solid 1px lightgray;
   border-radius: 5px;
   width: 80vw;
   padding: 0.5rem;
   background: rgb(246, 246, 246);
   overflow: auto;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
