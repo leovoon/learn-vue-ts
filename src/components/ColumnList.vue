@@ -1,6 +1,6 @@
 <template>
-  <div class="container flex flex-col  gap-6">
-    <div class="  rounded border-[0.2px] shadow shadow-sm text-sm min-w-[80vw] shadow-dark-50" v-for="column in list" :key="column.id">
+  <div class="container flex flex-col md:flex-row gap-10">
+    <div class="  rounded border-[0.2px] md:min-w-[25vw] shadow shadow-sm text-sm min-w-[80vw] shadow-dark-50" v-for="column in list" :key="column.id">
       <div class="flex  space-x-4 p-3 items-center justify-start">
       <img class="rounded-full h-10 w-10 " :src="column.avatar" :alt="column.title" />
       <h2 class="text-md">{{ column.title }}</h2>

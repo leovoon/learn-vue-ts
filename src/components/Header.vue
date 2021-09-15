@@ -9,7 +9,7 @@
       <button class="bg-dark-50/10 rounded px-2 py-1">Sign Up</button>
     </div>
     <div v-else class="inline-block space-x-4 text-sm relative">
-      <pre>drop down</pre> <Dropdown :title="`${user.userName}`" />
+      <pre>dropdown dropdownItem</pre> <Dropdown :title="`${user.userName}`" />
     </div>
   </nav>
 </template>

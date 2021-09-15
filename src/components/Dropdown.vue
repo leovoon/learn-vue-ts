@@ -18,7 +18,7 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
 
-    <div v-if="isOpen" class="bg-white rounded-lg flex-col flex shadow-lg z-10 absolute top-6">
+    <div v-if="isOpen" class="bg-white rounded-lg flex-col flex shadow-lg z-10 absolute top-12">
       <DropdownItem disabled>
         <button class="px-4 py-2">Disabled</button>
       </DropdownItem>
