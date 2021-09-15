@@ -1,5 +1,5 @@
 <template>
-  <nav class="mb-10 flex justify-between items-center block">
+  <nav class="mb-10 w-full flex justify-between items-center block">
     <div class="logo">
       <a class="brand-logo bg-gradient-26 p-1 text-white">cooLogo</a>
     </div>

@@ -3,14 +3,18 @@
     <pre>nav</pre>
     <Header :user="testUser" />
 
-    <pre>columns column</pre>
+    <pre>columnList columnItem</pre>
     <ColumnList :list="testData" />
 
     <pre class="mt-4rem">useStorage</pre>
     <input class="border-light-blue-300 border rounded p-1.5" v-model="state.content" type="text" />
     {{ text }}
 
-    <pre class="mt-4rem">pass attr from parent to child, inheritAttr = false, v-bind $attrs | validate @blur</pre>
+    <pre class="mt-4rem text-xs">
+pass attr from parent to child, 
+inheritAttr = false, v-bind $attrs 
+validate @blur
+    </pre>
     <ValidateInput type="text" placeholder="Type something here.."/>
 
   </div>
@@ -21,15 +25,12 @@ import ColumnList, { ColumnProps } from '../components/ColumnList.vue'
 import ValidateInput from '../components/ValidateInput.vue'
 
 import { useStorage } from '@vueuse/core'
-import ValidateInput1 from '../components/ValidateInput.vue';
 
 const obj: { content: string, bar?: string } = { content: 'banana' };
 
 const state = useStorage('vue-use-locale-storage', obj)
 
 state.value = { ...state.value, bar: 'Apple' }
-
-
 
 const text = JSON.stringify(state.value)
 

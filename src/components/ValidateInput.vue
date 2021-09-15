@@ -7,11 +7,13 @@
             @input="updateInput"
             @blur="validateEmpty"
         />
-        2 way binding : {{ val }}
-        <span
-            class="block text-red-500 text-xs"
-            v-if="error"
-        >at least type something?</span>
+            <span
+                class="block text-red-500 text-xs"
+                v-if="error"
+            >at least type something?</span>
+        <pre>
+2 ways binding : {{ val }}
+        </pre>
     </div>
 </template>
 
